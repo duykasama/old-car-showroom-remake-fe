@@ -1,0 +1,18 @@
+.post {
+    max-width: 300px;
+    min-height: 250px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    transition: transform 100ms linear;
+    .info {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+    .price {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+    .border-bl {
+        border-bottom-left-radius: 4px;
+    }
+}
