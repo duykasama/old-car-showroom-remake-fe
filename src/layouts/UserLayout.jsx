@@ -3,6 +3,7 @@ import Header from "../components/ui/user/Header";
 import Footer from "../components/ui/user/Footer";
 import Home from "../pages/user/Home";
 import CarInventory from "../pages/user/CarInventory";
+import Login from "../components/ui/Login";
 
 function UserLayout() {
   return (
@@ -11,6 +12,7 @@ function UserLayout() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="/car-inventory" element={<CarInventory />} />
+        <Route path="/log-in" element={<Login />} />
       </Routes>
       <Footer />
     </>

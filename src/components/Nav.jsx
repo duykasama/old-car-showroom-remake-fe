@@ -26,7 +26,7 @@ function Nav() {
           <Link>Customer Service</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2">
-          <Link>Log in</Link>
+          <Link to="/log-in">Log in</Link>
         </li>
       </ul>
     </nav>
