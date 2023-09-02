@@ -1,0 +1,39 @@
+{
+  "brands": [
+    "Aston Martin",
+    "Audi",
+    "BMW",
+    "Chevrolet",
+    "Chrysler",
+    "Ferrari",
+    "Honda",
+    "Hyundai",
+    "Kia",
+    "Lamboghini",
+    "Land Rover",
+    "Lexus"
+  ],
+  "models": [
+    "GTR",
+    "BMW 7 Series",
+    "Huracán",
+    "Land Rover Defender",
+    "Lexus GX",
+    "Tesla Model X",
+    "Mercedes-Benz GLA",
+    "Toyota Highlander"
+  ],
+  "bodyStyles": [
+    "Cabriolet",
+    "Compact",
+    "Coupe",
+    "Electric Vehicle (EV)",
+    "Minivan",
+    "Sedan",
+    "Sports",
+    "SUV",
+    "Van"
+  ],
+  "transmissions": ["Automatic", "Manual", "Semi-automatic"],
+  "fuelTypes": ["Diesel", "Electric", "Gasolin", "Hybrid", "Petrol"]
+}

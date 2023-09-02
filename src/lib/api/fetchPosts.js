@@ -19,8 +19,19 @@ async function fetch(endPoint) {
   return result;
 }
 
-export default async function fetchPosts() {
-  return await fetch(POSTS_END_POINT);
+export default async function fetchPosts(pageSize, offset) {
+  try {
+    const response = await axios.get(POSTS_END_POINT, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      params: {pageSize, offset},
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.log("An error occurred: ", error);
+  }
 }
 
 export async function fetchPrioritizedPosts() {

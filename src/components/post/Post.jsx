@@ -22,11 +22,15 @@ function Post({ post }) {
         )}
         <h3 className="text-2xl font-bold">{post.car.name}</h3>
         <ul className="flex gap-3">
-          {carDescription.mileage && <li>{carDescription.mileage} mi</li>}
-          {carDescription.transmission && (
+          {carDescription && carDescription.mileage && (
+            <li>{carDescription.mileage} mi</li>
+          )}
+          {carDescription && carDescription.transmission && (
             <li>{carDescription.transmission}</li>
           )}
-          {carDescription.power && <li>{carDescription.power} hp</li>}
+          {carDescription && carDescription.power && (
+            <li>{carDescription.power} hp</li>
+          )}
         </ul>
       </div>
       <div className="grid grid-cols-2 price">
