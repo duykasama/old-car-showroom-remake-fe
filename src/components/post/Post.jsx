@@ -8,11 +8,13 @@ function Post({ post }) {
   return (
     <div className="shadow-gray-800 shadow-sm rounded-md cursor-pointer hover:scale-105 post">
       <img
-        src="https://timelessride.s3.amazonaws.com/1690773310523_00-2.png"
+        className="h-48 post--image"
+        src={post.car.carImages[0].content}
         alt="Car image"
         width={300}
+        height={200}
       />
-      <div className="px-2 gap-2 my-1 info">
+      <div className="px-2 gap-2 my-2 info">
         {post.postDate && (
           <div className="py-1 px-3 border bg-gray-200 rounded max-w-fit">
             {formateDate(post.postDate)}
@@ -28,8 +30,12 @@ function Post({ post }) {
         </ul>
       </div>
       <div className="grid grid-cols-2 price">
-        <div className="bg-red-500 p-2 border-bl">For sale</div>
-        <div className="p-2 text-center italic">{formatUsDollar(post.car.price)}</div>
+        <div className="bg-red-500 p-2 text-center font-bold text-white border-bl">
+          For sale
+        </div>
+        <div className="p-2 text-center italic">
+          {formatUsDollar(post.car.price)}
+        </div>
       </div>
     </div>
   );

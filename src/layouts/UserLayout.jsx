@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "../components/ui/user/Header";
-import Footer from "../components/ui/user/Footer";
+import Footer from "../components/ui/user/footer/Footer";
 import Home from "../pages/user/Home";
 import CarInventory from "../pages/user/CarInventory";
 import Login from "../components/ui/Login";
