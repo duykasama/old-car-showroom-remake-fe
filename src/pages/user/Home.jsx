@@ -15,10 +15,8 @@ const [priorPosts, setPriorPosts] = useState([]);
     setPriorPosts(await fetchPrioritizedPosts());
   };
 
-  console.log(priorPosts);
-
   return (
-    <main className="flex flex-col justify-between items-center gap-4">
+    <main className="flex flex-col justify-between items-center gap-28">
       <Hero />
       <PrioritizedPosts posts={priorPosts} />
       <WebInfo />

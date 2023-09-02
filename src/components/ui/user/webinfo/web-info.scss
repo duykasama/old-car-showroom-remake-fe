@@ -1,0 +1,19 @@
+.web-info {
+  display: grid;
+  grid-template-columns: auto auto;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+    background-image: url("/public/feature/car.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    right: 0;
+    left: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

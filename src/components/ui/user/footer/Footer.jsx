@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <footer className="p-6 mt-10 flex flex-col gap-10 justify-center items-center text-white py-8">
+    <footer className="p-6 flex flex-col gap-10 justify-center items-center text-white py-8">
       <Contact contact={contactData} />
       <div className="grid grid-cols-2 w-4/5">
         <div className="flex flex-col gap-8 text-slate-300">

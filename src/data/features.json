@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "Engine",
+        "img": "/public/feature/feature-1.png"
+    },
+    {
+        "id": 2,
+        "name": "Turbo",
+        "img": "/public/feature/feature-2.png"
+    },
+    {
+        "id": 3,
+        "name": "Colling",
+        "img": "/public/feature/feature-3.png"
+    },
+    {
+        "id": 4,
+        "name": "Suspension",
+        "img": "/public/feature/feature-4.png"
+    },
+    {
+        "id": 5,
+        "name": "Electrical",
+        "img": "/public/feature/feature-5.png"
+    },
+    {
+        "id": 6,
+        "name": "Brakes",
+        "img": "/public/feature/feature-6.png"
+    }
+]
