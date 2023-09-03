@@ -14,16 +14,16 @@ function Nav() {
           <Link to="/car-inventory">Car inventory</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
-          <Link>Account</Link>
+          <Link to="/account">Account</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
-          <Link>History</Link>
+          <Link to="/history">History</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
-          <Link>Post Car</Link>
+          <Link to="/post-car">Post Car</Link>
         </li>
-        <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1transition">
-          <Link>Customer Service</Link>
+        <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
+          <Link to="/customer-service">Customer Service</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
           <Link to="/log-in">Log in</Link>

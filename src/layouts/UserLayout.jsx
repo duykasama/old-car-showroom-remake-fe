@@ -4,6 +4,8 @@ import Footer from "../components/ui/user/footer/Footer";
 import Home from "../pages/user/Home";
 import CarInventory from "../pages/user/CarInventory";
 import Login from "../components/ui/Login";
+import PageNotFound from "../pages/PageNotFound";
+import Account from "../pages/user/Account";
 
 function UserLayout() {
   return (
@@ -13,6 +15,8 @@ function UserLayout() {
         <Route index element={<Home />} />
         <Route path="/car-inventory" element={<CarInventory />} />
         <Route path="/log-in" element={<Login />} />
+        <Route path="/account" element={<Account />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </>
