@@ -6,6 +6,7 @@ import CarInventory from "../pages/user/CarInventory";
 import Login from "../components/ui/Login";
 import PageNotFound from "../pages/PageNotFound";
 import Account from "../pages/user/Account";
+import PostCar from "../pages/user/PostCar";
 
 function UserLayout() {
   return (
@@ -16,6 +17,7 @@ function UserLayout() {
         <Route path="/car-inventory" element={<CarInventory />} />
         <Route path="/log-in" element={<Login />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/post-car" element={<PostCar />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
