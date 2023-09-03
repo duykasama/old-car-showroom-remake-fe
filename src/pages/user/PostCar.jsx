@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ImageUploader from "../../components/ImageUploader";
 
 function PostCar() {
   const [formData, setFormData] = useState({
@@ -37,9 +38,13 @@ function PostCar() {
   };
 
   return (
-    <main className="flex justify-center items-center py-10">
-      <form onSubmit={handleFormSubmit} className="grid grid-cols-3 gap-8 w-4/5">
-        <div className="flex flex-col gap-2 text-sm">
+    <main className="flex flex-col justify-center items-center py-10 gap-20">
+      <h2 className="text-4xl font-bold">Fill in information about your car</h2>
+      <form
+        onSubmit={handleFormSubmit}
+        className="grid grid-cols-3 gap-8 w-4/5"
+      >
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="carName">Car name</label>
           <input
             className="p-2 border rounded"
@@ -49,7 +54,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="make">Make</label>
           <input
             className="p-2 border rounded"
@@ -59,7 +64,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="model">Model</label>
           <input
             className="p-2 border rounded"
@@ -69,7 +74,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="body">Body</label>
           <input
             className="p-2 border rounded"
@@ -79,7 +84,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="bodyColor">Body color</label>
           <input
             className="p-2 border rounded"
@@ -89,7 +94,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="interiorMaterial">Interior material</label>
           <input
             className="p-2 border rounded"
@@ -99,7 +104,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="interiorColor">Interior color</label>
           <input
             className="p-2 border rounded"
@@ -109,7 +114,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="licensePlate">License plate</label>
           <input
             className="p-2 border rounded"
@@ -119,7 +124,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="transmission">Transmission</label>
           <input
             className="p-2 border rounded"
@@ -129,7 +134,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="seats">Seats</label>
           <input
             className="p-2 border rounded"
@@ -140,7 +145,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="mileage">Mileage</label>
           <input
             className="p-2 border rounded"
@@ -150,7 +155,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="engineCapacity">Engine capacity</label>
           <input
             className="p-2 border rounded"
@@ -160,7 +165,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="power">Power</label>
           <input
             className="p-2 border rounded"
@@ -170,7 +175,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="co2Emission">CO2 Emission</label>
           <input
             className="p-2 border rounded"
@@ -180,7 +185,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="fuelType">Fuel type</label>
           <input
             className="p-2 border rounded"
@@ -190,7 +195,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="firstRegistration">First registration</label>
           <input
             className="p-2 border rounded"
@@ -200,7 +205,7 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm">
+        <div className="flex flex-col gap-2 text-sm font-bold">
           <label htmlFor="price">Price</label>
           <input
             className="p-2 border rounded"
@@ -211,7 +216,10 @@ function PostCar() {
             onChange={handleFormDataChange}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm col-span-3">
+        <div className="col-span-3 flex flex-col justify-center items-center">
+          <ImageUploader />
+        </div>
+        <div className="flex flex-col gap-2 text-sm font-bold col-span-3">
           <label htmlFor="otherInformation">
             Other information about the car
           </label>
@@ -223,7 +231,7 @@ function PostCar() {
             rows={5}
           />
         </div>
-        <div className="flex flex-col gap-2 text-sm col-span-3">
+        <div className="flex flex-col gap-2 text-sm font-bold col-span-3">
           <label htmlFor="postDescription">
             Write a description about your post
           </label>
@@ -236,7 +244,7 @@ function PostCar() {
           />
         </div>
         <div className="col-span-3 flex justify-center items-center">
-          <button className="py-3 px-8 rounded border bg-red-500 text-white text-lg font-semibold hover:scale-110 hover:shadow-large shadow-red-500 transition">
+          <button className="py-3 px-8 rounded border bg-red-500 text-white text-lg font-semibold hover:scale-110 hover:shadow-gray-500 shadow-md  transition">
             Post car
           </button>
         </div>
