@@ -3,18 +3,18 @@
     "id": 1,
     "service": "Car Posting",
     "description": "Provide a service offer user to post their car with detail image and technical information.",
-    "img": "/public/services/services-1.png"
+    "img": "/services/services-1.png"
   },
   {
     "id": 2,
     "service": "Car Buying",
     "description": "Provide a service offer user to buy old car from multiple make and model.",
-    "img": "/public/services/services-2.png"
+    "img": "/services/services-2.png"
   },
   {
     "id": 3,
     "service": "Support 24/7",
     "description": "We are apprciated to received your feedback.",
-    "img": "/public/services/services-4.png"
+    "img": "/services/services-4.png"
   }
 ]

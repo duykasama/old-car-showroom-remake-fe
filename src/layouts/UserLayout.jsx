@@ -7,6 +7,7 @@ import Login from "../components/ui/Login";
 import PageNotFound from "../pages/PageNotFound";
 import Account from "../pages/user/Account";
 import PostCar from "../pages/user/PostCar";
+import CustomerService from "../pages/user/CustomerService";
 
 function UserLayout() {
   return (
@@ -18,6 +19,7 @@ function UserLayout() {
         <Route path="/log-in" element={<Login />} />
         <Route path="/account" element={<Account />} />
         <Route path="/post-car" element={<PostCar />} />
+        <Route path="/customer-service" element={<CustomerService />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />

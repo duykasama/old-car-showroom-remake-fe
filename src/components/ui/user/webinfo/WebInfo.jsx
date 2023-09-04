@@ -1,7 +1,7 @@
 import Service from "./Service";
 import services from "../../../../data/services.json";
 import features from "../../../../data/features.json";
-import chooseUsVideo from "../../../../../public/chooseus-video.png"
+import chooseUsVideo from "/public/chooseus-video.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 import "./web-info.scss";
