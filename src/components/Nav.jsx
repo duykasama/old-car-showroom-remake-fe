@@ -26,7 +26,7 @@ function Nav() {
           <Link to="/customer-service">Customer Service</Link>
         </li>
         <li className="rounded-md active:bg-gray-300 py-1 px-2 hover:-translate-y-1 transition">
-          <Link to="/log-in">Log in</Link>
+          <Link to="/sign-in">Sign in</Link>
         </li>
       </ul>
     </nav>
