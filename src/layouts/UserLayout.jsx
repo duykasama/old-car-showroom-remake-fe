@@ -1,28 +1,15 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes } from "react-router-dom";
 import Header from "../components/ui/user/Header";
 import Footer from "../components/ui/user/footer/Footer";
-import Home from "../pages/user/Home";
-import CarInventory from "../pages/user/CarInventory";
-import Login from "../components/ui/Login";
-import PageNotFound from "../pages/PageNotFound";
-import Account from "../pages/user/Account";
-import PostCar from "../pages/user/PostCar";
-import CustomerService from "../pages/user/CustomerService";
 
 function UserLayout() {
   return (
     <>
+    <div className="client-layout">
       <Header />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path="/car-inventory" element={<CarInventory />} />
-        <Route path="/log-in" element={<Login />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/post-car" element={<PostCar />} />
-        <Route path="/customer-service" element={<CustomerService />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <Outlet />
       <Footer />
+    </div>
     </>
   );
 }

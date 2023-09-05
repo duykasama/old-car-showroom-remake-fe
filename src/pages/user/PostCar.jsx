@@ -244,7 +244,7 @@ function PostCar() {
           />
         </div>
         <div className="col-span-3 flex justify-center items-center">
-          <button className="py-3 px-8 rounded border bg-red-500 text-white text-lg font-semibold hover:scale-110 hover:shadow-gray-500 shadow-md  transition">
+          <button className="py-3 px-8 rounded border bg-red-500 text-white text-lg font-semibold hover:scale-110 hover:shadow-gray-500 shadow-md transition">
             Post car
           </button>
         </div>
