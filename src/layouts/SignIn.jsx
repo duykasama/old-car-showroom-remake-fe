@@ -5,15 +5,41 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import { Link, redirect, useLocation, useNavigate } from "react-router-dom";
+import axios from "../lib/api/axios";
+import AuthContext from "../context/AuthProvider";
+
+const SIGN_IN_END_POINT = "/auth/login";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState("");
   const passwordRef = useRef(null);
+  const { setAuth } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from.pathname || "/";
 
-  const handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
+    const form_data = new FormData();
+    form_data.append("email", formData.email);
+    form_data.append("password", formData.password);
     event.preventDefault();
+    try {
+      const response = await axios.post(SIGN_IN_END_POINT, form_data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      if (response.status === 200) {
+        setAuth({ accessToken: response.data });
+        navigate(from, { replace: true });
+      }
+    } catch (error) {
+      setErrorMessage(error.response.data);
+    }
   };
 
   const revealPassword = () => {
@@ -23,6 +49,13 @@ function SignIn() {
     } else {
       passwordRef.current.type = "password";
     }
+  };
+
+  const handleFormDataChange = (event) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [event.target.name]: event.target.value,
+    }));
   };
   return (
     <>
@@ -46,6 +79,8 @@ function SignIn() {
                   type="email"
                   name="email"
                   id="email"
+                  required
+                  onChange={handleFormDataChange}
                   className="rounded p-1"
                 />
               </div>
@@ -59,6 +94,9 @@ function SignIn() {
                     name="password"
                     id="password"
                     ref={passwordRef}
+                    required
+                    autoComplete="true"
+                    onChange={handleFormDataChange}
                     className="rounded p-1 w-full"
                   />
                   <FontAwesomeIcon
@@ -78,6 +116,11 @@ function SignIn() {
                 <Link className="text-sm text-blue-500">Forgot password?</Link>
               </div>
             </div>
+            {errorMessage && (
+              <p className="text-sm text-center text-red-700 font-bold">
+                {errorMessage}
+              </p>
+            )}
 
             <div className="flex justify-center items-center">
               <button className="py-2 px-5 rounded bg-red-500 text-white text-lg font-semibold hover:scale-110 hover:shadow-gray-500 shadow-md transition">

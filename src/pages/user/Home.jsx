@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import Hero from "../../components/hero/Hero";
 import PrioritizedPosts from "../../components/ui/user/PrioritizedPosts";
 import WebInfo from "../../components/ui/user/webinfo/WebInfo";
-import { fetchPrioritizedPosts } from "../../lib/api/fetchPosts";
+import fetchPosts from "../../lib/api/fetchPosts";
+import useAuth from "../../hooks/useAuth";
 
 function Home() {
-const [priorPosts, setPriorPosts] = useState([]);
+  const [priorPosts, setPriorPosts] = useState([]);
+  const {auth} = useAuth();
 
   useEffect(() => {
     fetchPriorPosts();
+    console.log(auth);
   }, []);
 
   const fetchPriorPosts = async () => {
-    setPriorPosts(await fetchPrioritizedPosts());
+    setPriorPosts(await fetchPosts(9, 1));
   };
 
   return (

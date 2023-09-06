@@ -31,3 +31,8 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.selected {
+  border-bottom: 8px;
+  /* border-color: red!important; */
+}
