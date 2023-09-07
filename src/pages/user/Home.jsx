@@ -13,13 +13,21 @@ function Home() {
   const { auth } = useAuth();
 
   useEffect(() => {
+    let isMounted = true;
+    const controller = new AbortController();
+
     setIsloading(true);
-    fetchPriorPosts();
+    fetchPriorPosts(controller.signal);
     console.log(auth);
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    }
   }, []);
 
-  const fetchPriorPosts = async () => {
-    setPriorPosts(await fetchPosts(9, 1));
+  const fetchPriorPosts = async (signal) => {
+    setPriorPosts(await fetchPosts(9, 1, signal));
     await new Promise((r) => setTimeout(r, 500));
     setIsloading(false);
   };

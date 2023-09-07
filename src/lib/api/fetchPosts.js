@@ -20,7 +20,7 @@ async function fetch(endPoint) {
   return result;
 }
 
-export default async function fetchPosts(pageSize, offset) {
+export default async function fetchPosts(pageSize, offset, controllerSignal) {
   try {
     const response = await axios.get(POSTS_END_POINT, {
       headers: {
@@ -28,6 +28,7 @@ export default async function fetchPosts(pageSize, offset) {
       },
       params: { pageSize, offset },
       withCredentials: true,
+      signal: controllerSignal
     });
     return response.data;
   } catch (error) {

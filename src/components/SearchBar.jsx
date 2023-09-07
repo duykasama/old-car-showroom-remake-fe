@@ -51,6 +51,7 @@ function SearchBar({ changePosts }) {
             type="text"
             name="search"
             placeholder="Search..."
+            required
             onChange={handlesearchKeywordChange}
             className="p-4 rounded border text-gray-600 w-full"
           />

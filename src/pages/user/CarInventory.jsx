@@ -16,14 +16,21 @@ function CarInventory() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    getPosts(currentPage);
+    let isMounted = true;
+    const controller = new AbortController();
 
+    setIsLoading(true);
+    isMounted && getPosts(currentPage, controller.signal);
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+
+    return () => {
+      isMounted = false;
+      controller.abort();
+    };
   }, [currentPage]);
 
-  async function getPosts(offset) {
-    setPosts(await fetchPosts(PAGE_SIZE, offset));
+  async function getPosts(offset, signal) {
+    setPosts(await fetchPosts(PAGE_SIZE, offset, signal));
     setLastPage(await fetchLastPage(PAGE_SIZE));
     await new Promise((r) => setTimeout(r, 500));
     setIsLoading(false);
@@ -44,17 +51,18 @@ function CarInventory() {
           <FontAwesomeIcon icon={faSpinner} className="text-5xl animate-spin" />
         </div>
       )}
-      {posts && posts.length > 0 && !isLoading ? (
-        <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
-          {posts.map((post) => (
-            <Post key={post.id} post={post} />
-          ))}
-        </div>
-      ) : (
-        <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
-          There is no posts
-        </div>
-      )}
+      {!isLoading &&
+        (posts && posts.length > 0 ? (
+          <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
+            {posts.map((post) => (
+              <Post key={post.id} post={post} />
+            ))}
+          </div>
+        ) : (
+          <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
+            There is no posts
+          </div>
+        ))}
       <div className="col-span-5">
         <Pagination
           handlePaginationSubmit={handlePaginationSubmit}
