@@ -61,7 +61,7 @@ function CarInventory() {
 
   return (
     <main className="grid grid-cols-5 px-20 my-10 gap-6">
-      <SearchBar changePosts={setPosts} />
+      <SearchBar changePosts={setPosts} changeLoadingStatus={setIsLoading} />
       {isLoading ? (
         <div className="col-span-4 w-full h-full flex justify-center items-center">
           <FontAwesomeIcon icon={faSpinner} className="text-5xl animate-spin" />
@@ -78,7 +78,7 @@ function CarInventory() {
             icon={faFaceSadTear}
             className="text-5xl text-red-500"
           />
-          <p className="text-3xl font-light">There is no currently no posts</p>
+          <p className="text-3xl font-light">There is no posts to display</p>
         </div>
       )}
       <div className="col-span-5">

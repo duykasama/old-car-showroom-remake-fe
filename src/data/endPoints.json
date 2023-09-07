@@ -1,3 +1,5 @@
 {
-    "POSTS": "/posts"
+    "POSTS": "/posts",
+    "SEARCH_POSTS": "/posts/search",
+    "FILTER_POSTS": "/posts/filter"
 }

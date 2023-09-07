@@ -9,9 +9,12 @@ import {
   fuelTypes,
 } from "../data/carData.json";
 import { searchPosts } from "../lib/api/fetchPosts";
+import axios from "../lib/api/axios";
+import endPoints from "../data/endPoints.json";
 
-function SearchBar({ changePosts }) {
+function SearchBar({ changePosts, changeLoadingStatus }) {
   const [searchKeyword, setsearchKeyword] = useState("");
+  const [price, setPrice] = useState(0);
   const [filterData, setFilterData] = useState({
     brand: "",
     model: "",
@@ -20,15 +23,48 @@ function SearchBar({ changePosts }) {
     fuelType: "",
   });
 
-  const handleSearch = async (event) => {
+  const handleSearch = (event) => {
     event.preventDefault();
-    changePosts(await searchPosts(12, 1, searchKeyword));
-    console.log("send request to search");
+    changeLoadingStatus(true);
+    const searchPosts = async () => {
+      try {
+        const response = await axios.get(endPoints.SEARCH_POSTS, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          params: { pageSize: 12, offset: 1, keyword: searchKeyword },
+          withCredentials: true,
+        });
+        changePosts(response.data);
+        await new Promise((r) => setTimeout(r, 300));
+        changeLoadingStatus(false);
+      } catch {
+        console.log("an error occurred");
+      }
+    };
+    searchPosts();
   };
 
   const handleFilter = (event) => {
     event.preventDefault();
-    console.log(filterData);
+    changeLoadingStatus(true);
+    const filterPosts = async () => {
+      try {
+        const response = await axios.get(endPoints.FILTER_POSTS, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          params: { ...filterData, minPrice: Math.max(0, price) },
+          withCredentials: true,
+        });
+        changePosts(response.data);
+        await new Promise((r) => setTimeout(r, 300));
+        changeLoadingStatus(false);
+      } catch {
+        console.log("an error occurred");
+      }
+    };
+    filterPosts();
   };
 
   const handlesearchKeywordChange = (event) => {
@@ -129,12 +165,14 @@ function SearchBar({ changePosts }) {
               </option>
             ))}
           </select>
-          <div>Price: [ $0 - $1000000 ]</div>
+          <div>Price: [ ${price} - $1000000 ]</div>
           <input
             type="range"
-            min={100}
-            max={500}
+            min={0}
+            max={1000000}
+            step={1000}
             minLength={200}
+            onChange={(event) => setPrice(event.target.value)}
             className="w-full"
           />
           <button className="py-2 px-4 rounded border w-fit bg-red-500 font-semibold text-white">
