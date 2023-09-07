@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import axios from "../../lib/api/axios";
 import SearchBar from "../../components/SearchBar";
-import fetchPosts, { fetchLastPage } from "../../lib/api/fetchPosts";
 import Post from "../../components/post/Post";
 import Pagination from "../../components/Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faFaceSadTear } from "@fortawesome/free-regular-svg-icons";
+import endPoints from "../../data/endPoints.json";
 
 const PAGE_SIZE = 12;
 
@@ -18,9 +20,30 @@ function CarInventory() {
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
-
     setIsLoading(true);
-    isMounted && getPosts(currentPage, controller.signal);
+
+    const getPosts = async () => {
+      try {
+        const response = await axios.get(endPoints.POSTS, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          params: { pageSize: PAGE_SIZE, offset: currentPage },
+          withCredentials: true,
+          signal: controller.signal,
+        });
+        if (isMounted) {
+          setPosts(response.data.posts);
+          setLastPage(response.data.lastPage);
+          await new Promise((r) => setTimeout(r, 300));
+          setIsLoading(false);
+        }
+      } catch (error) {
+        console.log("An error occurred: ", error);
+      }
+    };
+
+    getPosts();
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
 
     return () => {
@@ -28,13 +51,6 @@ function CarInventory() {
       controller.abort();
     };
   }, [currentPage]);
-
-  async function getPosts(offset, signal) {
-    setPosts(await fetchPosts(PAGE_SIZE, offset, signal));
-    setLastPage(await fetchLastPage(PAGE_SIZE));
-    await new Promise((r) => setTimeout(r, 500));
-    setIsLoading(false);
-  }
 
   const handlePaginationSubmit = (event) => {
     event.preventDefault();
@@ -46,23 +62,25 @@ function CarInventory() {
   return (
     <main className="grid grid-cols-5 px-20 my-10 gap-6">
       <SearchBar changePosts={setPosts} />
-      {isLoading && (
+      {isLoading ? (
         <div className="col-span-4 w-full h-full flex justify-center items-center">
           <FontAwesomeIcon icon={faSpinner} className="text-5xl animate-spin" />
         </div>
+      ) : posts && posts.length > 0 ? (
+        <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
+          {posts.map((post) => (
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+      ) : (
+        <div className="col-span-4 flex flex-col justify-center items-center">
+          <FontAwesomeIcon
+            icon={faFaceSadTear}
+            className="text-5xl text-red-500"
+          />
+          <p className="text-3xl font-light">There is no currently no posts</p>
+        </div>
       )}
-      {!isLoading &&
-        (posts && posts.length > 0 ? (
-          <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
-            {posts.map((post) => (
-              <Post key={post.id} post={post} />
-            ))}
-          </div>
-        ) : (
-          <div className="col-span-4 grid grid-cols-4 grid-rows-3 gap-8">
-            There is no posts
-          </div>
-        ))}
       <div className="col-span-5">
         <Pagination
           handlePaginationSubmit={handlePaginationSubmit}
