@@ -9,7 +9,7 @@ function Post({ post }) {
     <div className="shadow-gray-800 shadow-sm rounded-md cursor-pointer hover:scale-105 post">
       <img
         className="h-48 post--image"
-        src={post.car.carImages[0].content}
+        src={post.car?.carImages[0]?.content || "https://ford.prodealerwebsites.com.au/specials/default.png"}
         alt="Car image"
         width={300}
         height={200}

@@ -38,7 +38,7 @@ function CarInventory() {
 
   return (
     <main className="grid grid-cols-5 px-20 my-10 gap-6">
-      <SearchBar />
+      <SearchBar changePosts={setPosts} />
       {isLoading && (
         <div className="col-span-4 w-full h-full flex justify-center items-center">
           <FontAwesomeIcon icon={faSpinner} className="text-5xl animate-spin" />

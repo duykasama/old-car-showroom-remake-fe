@@ -8,9 +8,10 @@ import {
   transmissions,
   fuelTypes,
 } from "../data/carData.json";
+import { searchPosts } from "../lib/api/fetchPosts";
 
-function SearchBar() {
-  const [searchData, setSearchData] = useState({ search: "" });
+function SearchBar({ changePosts }) {
+  const [searchKeyword, setsearchKeyword] = useState("");
   const [filterData, setFilterData] = useState({
     brand: "",
     model: "",
@@ -19,9 +20,10 @@ function SearchBar() {
     fuelType: "",
   });
 
-  const handleSearch = (event) => {
+  const handleSearch = async (event) => {
     event.preventDefault();
-    console.log(searchData);
+    changePosts(await searchPosts(12, 1, searchKeyword));
+    console.log("send request to search");
   };
 
   const handleFilter = (event) => {
@@ -29,11 +31,8 @@ function SearchBar() {
     console.log(filterData);
   };
 
-  const handleSearchDataChange = (event) => {
-    setSearchData((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+  const handlesearchKeywordChange = (event) => {
+    setsearchKeyword(event.target.value);
   };
 
   const handleFilterDataChange = (event) => {
@@ -52,7 +51,7 @@ function SearchBar() {
             type="text"
             name="search"
             placeholder="Search..."
-            onChange={handleSearchDataChange}
+            onChange={handlesearchKeywordChange}
             className="p-4 rounded border text-gray-600 w-full"
           />
           <button>
